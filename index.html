@@ -10,112 +10,126 @@
             --beige-dark: #BB8763;
             --beige-light: #d1bfa7;
             --text-dark: #1a1a1a;
+            --bg-crema: #fdfcfb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* --- SOLUCIÓN FONDO FIJO PARA MÓVILES --- */
+        .fixed-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Reemplazá con el nombre de tu foto de escritorio */
+            background-image: url('https://luciasecasa.com/wp-content/uploads/2024/02/reportaje-fotografico-de-boda-playa.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Se mantiene detrás de todo */
+        }
+
+        /* Capa para aclarar levemente la foto sin desenfocarla */
+        .fixed-background::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.15); 
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            /* --- FONDO ESTÁTICO DE LA PAREJA --- */
-            background-image: url('https://plus.unsplash.com/premium_photo-1675851210855-e7727076e829?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyZWphJTIwZGUlMjBib2RhfGVufDB8fDB8fHww'); /* REEMPLAZAR AQUÍ */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 40px 15px;
+            /* Eliminamos el background del body para usar el div fijo */
+            background: transparent;
         }
 
-        /* Capa de difuminado sobre el fondo */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.2); /* Aclara un poco la foto */
-            z-index: -1;
-        }
-
-        /* --- CONTENEDORES MÁS FINOS --- */
+        /* --- TARJETAS ESTILIZADAS (FINAS) --- */
         .section-card {
-            max-width: 450px; /* Más fino como pediste */
+            max-width: 450px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95); /* Blanco con leve transparencia */
-            margin-bottom: 25px;
-            border-radius: 2px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.98);
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* --- HEADER --- */
-        .header { padding: 60px 20px; }
-        .nos-casamos { font-size: 0.75em; letter-spacing: 6px; color: #999; text-transform: uppercase; margin-bottom: 20px; }
-        .header h1 { font-family: 'Lora', serif; font-size: 2.8em; font-weight: 400; color: var(--beige-light); }
-        .header h2 { font-family: 'Lora', serif; font-style: italic; font-size: 1.2em; margin-bottom: 15px; }
+        /* --- SECCIONES --- */
+        .header { padding: 80px 20px 60px; }
+        .nos-casamos { font-size: 0.8em; letter-spacing: 6px; color: #999; text-transform: uppercase; margin-bottom: 25px; font-weight: 300; }
+        .header h1 { font-family: 'Lora', serif; font-size: 3.2em; font-weight: 400; color: var(--beige-light); margin-bottom: 10px; }
+        .header h2 { font-family: 'Lora', serif; font-style: italic; font-size: 1.4em; font-weight: 400; margin-bottom: 25px; }
+        .date-divider { font-size: 1em; letter-spacing: 4px; color: var(--beige-light); text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .date-divider::before, .date-divider::after { content: ''; width: 35px; height: 1px; background-color: var(--beige-light); }
 
-        /* --- CARRUSEL --- */
-        .carousel { width: 100%; height: 400px; overflow: hidden; position: relative; }
+        .carousel { width: 100%; height: 500px; position: relative; }
         .carousel-track { display: flex; height: 100%; transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .carousel-slide { min-width: 100%; height: 100%; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- CONTADOR --- */
-        .countdown-grid { display: flex; justify-content: center; gap: 20px; padding: 40px 20px; }
+        .countdown-section { padding: 60px 20px; }
+        .countdown-section h3 { font-family: 'Lora', serif; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9em; margin-bottom: 30px; color: var(--beige-dark); }
+        .countdown-grid { display: flex; justify-content: center; gap: 25px; }
         .count-item span { display: block; }
-        .num { font-size: 2.2em; font-weight: 300; color: var(--beige-dark); }
-        .lab { font-size: 0.6em; text-transform: uppercase; letter-spacing: 2px; color: #999; }
+        .num { font-size: 2.5em; font-weight: 200; color: var(--text-dark); }
+        .lab { font-size: 0.65em; text-transform: uppercase; letter-spacing: 2px; color: #999; }
 
-        /* --- INFORMACIÓN --- */
-        .info-block { padding: 50px 30px; }
-        .info-title { font-size: 0.7em; text-transform: uppercase; letter-spacing: 4px; color: var(--beige-dark); margin-bottom: 10px; }
-        .info-detail { font-family: 'Lora', serif; font-size: 1.2em; margin-bottom: 25px; }
+        .section-info { padding: 80px 40px; background-color: var(--bg-crema); }
+        .info-block { margin-bottom: 20px; }
+        .info-title { font-size: 0.75em; text-transform: uppercase; letter-spacing: 4px; color: var(--beige-dark); margin-bottom: 15px; }
+        .info-detail { font-family: 'Lora', serif; font-size: 1.3em; color: var(--text-dark); }
+
+        .section-content { padding: 70px 40px; }
+        .section-title { font-family: 'Lora', serif; font-size: 1.4em; margin-bottom: 20px; color: var(--beige-light); text-transform: uppercase; letter-spacing: 3px; }
 
         /* --- BOTONES --- */
         .btn-action {
             display: inline-block;
             background-color: #1a1a1a;
             color: white;
-            padding: 16px 35px;
+            padding: 18px 45px;
             text-decoration: none;
-            font-size: 0.75em;
+            font-size: 0.8em;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            width: 80%;
-            margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            max-width: 320px;
         }
-        .btn-action:hover { opacity: 0.8; letter-spacing: 3px; }
+        .btn-action:hover { background-color: var(--beige-light); letter-spacing: 4px; }
         .btn-custom-color { background-color: var(--beige-dark); }
+        .btn-custom-color:hover { background-color: #a67655; }
 
-        /* --- SECCIONES BLANCAS --- */
-        .section-content { padding: 50px 30px; }
-        .section-title { font-family: 'Lora', serif; font-size: 1.3em; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; color: var(--beige-light); }
-        
-        details summary { 
-            list-style: none; font-size: 0.8em; letter-spacing: 2px; color: var(--beige-dark);
-            text-transform: uppercase; padding: 12px; border: 1px solid var(--beige-dark); cursor: pointer;
-        }
-        .bank-data { padding: 20px; background: #fafafa; font-size: 0.85em; text-align: left; border: 1px solid #eee; border-top: none; }
+        /* --- REGALOS --- */
+        details { max-width: 100%; margin: 0 auto; cursor: pointer; }
+        summary { list-style: none; font-size: 0.85em; letter-spacing: 2px; text-transform: uppercase; color: var(--beige-dark); font-weight: 600; padding: 15px; border: 1px solid var(--beige-dark); }
+        summary:hover { background: var(--beige-dark); color: white; }
+        .bank-data { padding: 25px; background: #fafafa; font-size: 0.9em; text-align: left; border: 1px solid #eee; border-top: none; line-height: 2; }
 
-        .dress-code-img { width: 100%; max-width: 320px; margin-top: 20px; }
-
-        .footer { padding: 40px 20px; text-align: center; font-size: 0.7em; color: white; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .dress-code-img { width: 100%; max-width: 380px; margin-top: 25px; border-radius: 2px; }
+        .footer { padding: 60px 20px; text-align: center; font-size: 0.75em; color: white; letter-spacing: 4px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
+
+    <div class="fixed-background"></div>
 
     <div class="section-card header">
         <p class="nos-casamos">¡Nos casamos!</p>
         <h1>Camila & Franco</h1>
         <h2>Nuestra Boda</h2>
-        <p style="letter-spacing: 4px; color: var(--beige-light);">25 . 04 . 2026</p>
+        <div class="date-divider">25 . 04 . 2026</div>
     </div>
 
     <div class="section-card carousel">
@@ -125,8 +139,8 @@
         </div>
     </div>
 
-    <div class="section-card">
-        <p style="padding-top: 30px; letter-spacing: 4px; font-size: 0.8em; color: #999;">FALTAN</p>
+    <div class="section-card countdown-section">
+        <h3>Faltan</h3>
         <div class="countdown-grid">
             <div class="count-item"><span class="num" id="d">00</span><span class="lab">Días</span></div>
             <div class="count-item"><span class="num" id="h">00</span><span class="lab">Hs</span></div>
@@ -135,28 +149,33 @@
         </div>
     </div>
 
-    <div class="section-card info-block">
-        <p class="info-title">La Ceremonia & Fiesta</p>
-        <p class="info-detail">Sábado 25 de Abril, 18:00 hs</p>
-        <p class="info-title">Lugar</p>
-        <p class="info-detail">Salón La Soraida, San José</p>
+    <div class="section-card section-info">
+        <div class="info-block">
+            <p class="info-title">La Ceremonia & Fiesta</p>
+            <p class="info-detail">Sábado 25 de Abril, 18:00 Horas</p>
+            <p style="margin-top: 30px;" class="info-title">Lugar</p>
+            <p class="info-detail">Salón La Soraida, San José</p>
+            <button class="btn-action btn-custom-color" style="margin-top: 20px;" onclick="window.open('https://maps.app.goo.gl/EHvMi54DAYjbLKjp7')">
+                Cómo llegar
+            </button>
+        </div>
     </div>
 
     <div class="section-card section-content">
-        <p class="section-title">Música</p>
-        <p style="font-size: 0.85em; margin-bottom: 20px; color: #666;">Ayudanos a armar la playlist sugiriendo tus canciones favoritas.</p>
+        <p class="section-title">Música para la fiesta</p>
+        <p style="font-size: 0.9em; margin-bottom: 30px; color: #666; line-height: 1.8;">Queremos que bailes toda la noche. Ayudanos a armar la playlist sugiriendo tus canciones favoritas.</p>
         <button class="btn-action btn-custom-color" onclick="window.open('https://open.spotify.com/playlist/3q58rByOccLZEX4qZN19fs?si=3ccacc688bc24b92&pt=3c30d232e30e3f9008c609cf7684d397')">Sugerir Canción</button>
     </div>
 
-    <div class="section-card section-content">
+    <div class="section-card section-content" style="background-color: var(--bg-crema);">
         <p class="section-title">Dress Code</p>
-        <p style="font-size: 0.8em; letter-spacing: 2px; text-transform: uppercase;">Elegante</p>
+        <p style="font-size: 0.9em; letter-spacing: 3px; text-transform: uppercase; color: #555;">Elegante</p>
         <img src="https://via.placeholder.com/400x150?text=Paleta+de+Colores" alt="Paleta" class="dress-code-img">
     </div>
 
     <div class="section-card section-content">
         <p class="section-title">Regalos</p>
-        <p style="font-size: 0.85em; color: #666; margin-bottom: 25px;">Si queres regalarnos algo más que tu hermosa presencia, a continuación te dejamos los datos.</p>
+        <p style="font-size: 0.95em; color: #666; margin-bottom: 30px; line-height: 1.8;">Si queres regalarnos algo más que tu hermosa presencia, a continuación te dejamos los datos.</p>
         <details>
             <summary>Ver Datos</summary>
             <div class="bank-data">
@@ -176,7 +195,6 @@
     </div>
 
     <script>
-        // Carrusel
         let idx = 0;
         const track = document.getElementById('track');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -185,7 +203,6 @@
             track.style.transform = `translateX(-${idx * 100}%)`;
         }, 4000);
 
-        // Contador
         function timer() {
             const wedding = new Date('2026-04-25T18:00:00').getTime();
             const now = new Date().getTime();

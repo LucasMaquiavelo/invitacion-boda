@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Camila y Franco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --beige-dark: #BB8763;
+            --beige-light: #d1bfa7;
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            /* --- FONDO ESTÁTICO DE LA PAREJA --- */
+            background-image: url('https://plus.unsplash.com/premium_photo-1675851210855-e7727076e829?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyZWphJTIwZGUlMjBib2RhfGVufDB8fDB8fHww'); /* REEMPLAZAR AQUÍ */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 15px;
+        }
+
+        /* Capa de difuminado sobre el fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Aclara un poco la foto */
+            z-index: -1;
+        }
+
+        /* --- CONTENEDORES MÁS FINOS --- */
+        .section-card {
+            max-width: 450px; /* Más fino como pediste */
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95); /* Blanco con leve transparencia */
+            margin-bottom: 25px;
+            border-radius: 2px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- HEADER --- */
+        .header { padding: 60px 20px; }
+        .nos-casamos { font-size: 0.75em; letter-spacing: 6px; color: #999; text-transform: uppercase; margin-bottom: 20px; }
+        .header h1 { font-family: 'Lora', serif; font-size: 2.8em; font-weight: 400; color: var(--beige-light); }
+        .header h2 { font-family: 'Lora', serif; font-style: italic; font-size: 1.2em; margin-bottom: 15px; }
+
+        /* --- CARRUSEL --- */
+        .carousel { width: 100%; height: 400px; overflow: hidden; position: relative; }
+        .carousel-track { display: flex; height: 100%; transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .carousel-slide { min-width: 100%; height: 100%; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- CONTADOR --- */
+        .countdown-grid { display: flex; justify-content: center; gap: 20px; padding: 40px 20px; }
+        .count-item span { display: block; }
+        .num { font-size: 2.2em; font-weight: 300; color: var(--beige-dark); }
+        .lab { font-size: 0.6em; text-transform: uppercase; letter-spacing: 2px; color: #999; }
+
+        /* --- INFORMACIÓN --- */
+        .info-block { padding: 50px 30px; }
+        .info-title { font-size: 0.7em; text-transform: uppercase; letter-spacing: 4px; color: var(--beige-dark); margin-bottom: 10px; }
+        .info-detail { font-family: 'Lora', serif; font-size: 1.2em; margin-bottom: 25px; }
+
+        /* --- BOTONES --- */
+        .btn-action {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 16px 35px;
+            text-decoration: none;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            width: 80%;
+            margin: 10px 0;
+        }
+        .btn-action:hover { opacity: 0.8; letter-spacing: 3px; }
+        .btn-custom-color { background-color: var(--beige-dark); }
+
+        /* --- SECCIONES BLANCAS --- */
+        .section-content { padding: 50px 30px; }
+        .section-title { font-family: 'Lora', serif; font-size: 1.3em; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; color: var(--beige-light); }
+        
+        details summary { 
+            list-style: none; font-size: 0.8em; letter-spacing: 2px; color: var(--beige-dark);
+            text-transform: uppercase; padding: 12px; border: 1px solid var(--beige-dark); cursor: pointer;
+        }
+        .bank-data { padding: 20px; background: #fafafa; font-size: 0.85em; text-align: left; border: 1px solid #eee; border-top: none; }
+
+        .dress-code-img { width: 100%; max-width: 320px; margin-top: 20px; }
+
+        .footer { padding: 40px 20px; text-align: center; font-size: 0.7em; color: white; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+
+    <div class="section-card header">
+        <p class="nos-casamos">¡Nos casamos!</p>
+        <h1>Camila & Franco</h1>
+        <h2>Nuestra Boda</h2>
+        <p style="letter-spacing: 4px; color: var(--beige-light);">25 . 04 . 2026</p>
+    </div>
+
+    <div class="section-card carousel">
+        <div class="carousel-track" id="track">
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600" alt="1"></div>
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600" alt="2"></div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <p style="padding-top: 30px; letter-spacing: 4px; font-size: 0.8em; color: #999;">FALTAN</p>
+        <div class="countdown-grid">
+            <div class="count-item"><span class="num" id="d">00</span><span class="lab">Días</span></div>
+            <div class="count-item"><span class="num" id="h">00</span><span class="lab">Hs</span></div>
+            <div class="count-item"><span class="num" id="m">00</span><span class="lab">Min</span></div>
+            <div class="count-item"><span class="num" id="s">00</span><span class="lab">Seg</span></div>
+        </div>
+    </div>
+
+    <div class="section-card info-block">
+        <p class="info-title">La Ceremonia & Fiesta</p>
+        <p class="info-detail">Sábado 25 de Abril, 18:00 hs</p>
+        <p class="info-title">Lugar</p>
+        <p class="info-detail">Salón La Soraida, San José</p>
+    </div>
+
+    <div class="section-card section-content">
+        <p class="section-title">Música</p>
+        <p style="font-size: 0.85em; margin-bottom: 20px; color: #666;">Ayudanos a armar la playlist sugiriendo tus canciones favoritas.</p>
+        <button class="btn-action btn-custom-color" onclick="window.open('https://open.spotify.com/playlist/3q58rByOccLZEX4qZN19fs?si=3ccacc688bc24b92&pt=3c30d232e30e3f9008c609cf7684d397')">Sugerir Canción</button>
+    </div>
+
+    <div class="section-card section-content">
+        <p class="section-title">Dress Code</p>
+        <p style="font-size: 0.8em; letter-spacing: 2px; text-transform: uppercase;">Elegante</p>
+        <img src="https://via.placeholder.com/400x150?text=Paleta+de+Colores" alt="Paleta" class="dress-code-img">
+    </div>
+
+    <div class="section-card section-content">
+        <p class="section-title">Regalos</p>
+        <p style="font-size: 0.85em; color: #666; margin-bottom: 25px;">Si queres regalarnos algo más que tu hermosa presencia, a continuación te dejamos los datos.</p>
+        <details>
+            <summary>Ver Datos</summary>
+            <div class="bank-data">
+                <p><strong>Titular:</strong> Franco Apellido</p>
+                <p><strong>Alias:</strong> boda.camila.franco</p>
+                <p><strong>CBU:</strong> 0000000000000000000000</p>
+            </div>
+        </details>
+    </div>
+
+    <div class="section-card section-content">
+        <button class="btn-action" onclick="window.open('https://forms.gle/7ArEYVWEL16z4vUp8')">Confirmar Asistencia</button>
+    </div>
+
+    <div class="footer">
+        <p>CON AMOR, CAMILA & FRANCO</p>
+    </div>
+
+    <script>
+        // Carrusel
+        let idx = 0;
+        const track = document.getElementById('track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        setInterval(() => {
+            idx = (idx + 1) % slides.length;
+            track.style.transform = `translateX(-${idx * 100}%)`;
+        }, 4000);
+
+        // Contador
+        function timer() {
+            const wedding = new Date('2026-04-25T18:00:00').getTime();
+            const now = new Date().getTime();
+            const d = wedding - now;
+            if (d > 0) {
+                document.getElementById('d').innerText = String(Math.floor(d / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('h').innerText = String(Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('m').innerText = String(Math.floor((d % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('s').innerText = String(Math.floor((d % (1000 * 60)) / 1000)).padStart(2, '0');
+            }
+        }
+        setInterval(timer, 1000);
+        timer();
+    </script>
+</body>
+</html>
